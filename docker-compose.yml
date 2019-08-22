@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  dabert:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./dabert:/dabert
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
