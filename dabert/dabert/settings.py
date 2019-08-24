@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
     'core',
     'user',
 ]
@@ -78,7 +80,7 @@ WSGI_APPLICATION = 'dabert.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'dabert.db'),
     }
 }
 
@@ -120,3 +122,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#<name of app>.<name of model in app that we assign the custom user model>
+AUTH_USER_MODEL = 'core.User'
