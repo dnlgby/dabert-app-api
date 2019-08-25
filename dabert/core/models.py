@@ -5,10 +5,10 @@ from django.core.validators import validate_email
 from django.conf import settings
 
 
-
 class UserManager(BaseUserManager):
 
-    def create_user(self, car_id, email, phone_number, password=None, **extra_fields):
+    def create_user(self, car_id, email, phone_number,
+                    password=None, **extra_fields):
         """Creates and saves a new user"""
 
         if not car_id:
@@ -47,8 +47,8 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     """Custom user model that supports using car_id instead of user_name"""
 
-    email = models.EmailField(max_length=255, unique=True)
     car_id = models.CharField(max_length=255, unique=True)
+    email = models.EmailField(max_length=255, unique=True)
     phone_number = models.CharField(max_length=10, unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
