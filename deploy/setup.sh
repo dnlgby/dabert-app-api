@@ -26,7 +26,7 @@ $PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirements.txt
 $PROJECT_BASE_PATH/env/bin/pip install uwsgi==2.0.18
 
 # Run migrations and collectstatic
-cd $PROJECT_BASE_PATH
+cd $PROJECT_MANAGE_PATH
 $PROJECT_MANAGE_PATH/env/bin/python manage.py migrate
 $PROJECT_MANAGE_PATH/env/bin/python manage.py collectstatic --noinput
 
