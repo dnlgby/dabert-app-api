@@ -31,12 +31,14 @@ $PROJECT_MANAGE_PATH/env/bin/python manage.py migrate
 $PROJECT_MANAGE_PATH/env/bin/python manage.py collectstatic --noinput
 
 # Configure supervisor
+echo "Setting supervisor..."
 cp $PROJECT_BASE_PATH/deploy/supervisor_dabert_api.conf /etc/supervisor/conf.d/dabert_api.conf
 supervisorctl reread
 supervisorctl update
 supervisorctl restart dabert_api
 
 # Configure nginx
+echo "Setting nginx..."
 cp $PROJECT_BASE_PATH/deploy/nginx_dabert_api.conf /etc/nginx/sites-available/dabert_api.conf
 rm /etc/nginx/sites-enabled/default
 ln -s /etc/nginx/sites-available/dabert_api.conf /etc/nginx/sites-enabled/dabert_api.conf
