@@ -6,6 +6,8 @@ set -e
 PROJECT_GIT_URL='https://github.com/dnlgby/dabert-app-api.git'
 
 PROJECT_BASE_PATH='/usr/local/apps/dabert-rest-api'
+PROJECT_MANAGE_PATH='/usr/local/apps/dabert-rest-api/dabert'
+
 
 echo "Installing dependencies..."
 apt-get update
@@ -25,8 +27,8 @@ $PROJECT_BASE_PATH/env/bin/pip install uwsgi==2.0.18
 
 # Run migrations and collectstatic
 cd $PROJECT_BASE_PATH
-$PROJECT_BASE_PATH/env/bin/python manage.py migrate
-$PROJECT_BASE_PATH/env/bin/python manage.py collectstatic --noinput
+$PROJECT_MANAGE_PATH/env/bin/python manage.py migrate
+$PROJECT_MANAGE_PATH/env/bin/python manage.py collectstatic --noinput
 
 # Configure supervisor
 cp $PROJECT_BASE_PATH/deploy/supervisor_dabert_api.conf /etc/supervisor/conf.d/dabert_api.conf
