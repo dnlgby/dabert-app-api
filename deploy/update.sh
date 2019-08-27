@@ -6,7 +6,7 @@ PROJECT_MANAGE_PATH='/usr/local/apps/dabert-rest-api/dabert'
 
 git pull
 $PROJECT_MANAGE_PATH/env/bin/python manage.py migrate
-$PROJECT_MANAGE_PATH/env/bin/python manage.py collectstatic --noinput
+$PROJECT_MANAGE_PATH/env/bin/python manage.py collectstatic
 supervisorctl restart dabert_api
 
 echo "DONE! :)"
