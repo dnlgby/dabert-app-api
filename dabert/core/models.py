@@ -59,14 +59,21 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['email', 'phone_number']
 
 
-class CarType(models.Model):
-    """A test model to understand django better"""
+class Notification(models.Model):
+    """Notification between users model"""
 
-    name = models.CharField(max_length=255)
-    user = models.ForeignKey(
+    from_user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
     )
 
+    to_user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+
+    notification = models.IntegerField()
+
     def __str__(self):
-        return self.name
+        """A string representation fot the notification model"""
+        return "{} {} {}".format(str(from_user), str(to_user), notification)
